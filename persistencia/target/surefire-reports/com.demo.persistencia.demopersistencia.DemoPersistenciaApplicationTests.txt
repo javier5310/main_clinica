@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.demo.persistencia.demopersistencia.DemoPersistenciaApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.29 s -- in com.demo.persistencia.demopersistencia.DemoPersistenciaApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.75 s -- in com.demo.persistencia.demopersistencia.DemoPersistenciaApplicationTests

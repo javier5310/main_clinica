@@ -23,7 +23,7 @@ public class PacienteService {
 
     @Transactional
     public PacienteResponseDTO registrarPaciente(PacienteRequestDTO request, String username) {
-        // Buscar usuario por username
+        
         Usuario usuarioRegistro = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + username));
         
@@ -39,7 +39,7 @@ public class PacienteService {
         paciente.setSeguroMedico(request.getSeguroMedico());
         paciente.setNumeroIdentificacion(numeroIdentificacion);
         paciente.setEmail(request.getEmail());
-        paciente.setUsuarioRegistro(usuarioRegistro);  // Asigna el usuario que registró
+        paciente.setUsuarioRegistro(usuarioRegistro);  
 
         // Guardar en la base de datos
         Paciente saved = pacienteRepository.save(paciente);
@@ -54,7 +54,7 @@ public class PacienteService {
                 .collect(Collectors.toList());
     }
 
-    public PacienteResponseDTO obtenerPaciente(Long id) {  // ← Long, no Integer
+    public PacienteResponseDTO obtenerPaciente(Long id) { 
         Paciente paciente = pacienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Paciente no encontrado con ID: " + id));
         return convertToResponseDTO(paciente);
@@ -69,8 +69,8 @@ public class PacienteService {
     private PacienteResponseDTO convertToResponseDTO(Paciente paciente) {
         PacienteResponseDTO dto = new PacienteResponseDTO();
         
-        // Ahora paciente.getPacienteId() es Long, se asigna directamente sin conversión
-        dto.setPacienteId(paciente.getPacienteId());  // ← Long → Long, directo
+        
+        dto.setPacienteId(paciente.getPacienteId());  
         
         dto.setNombreCompleto(paciente.getNombreCompleto());
         dto.setFechaNacimiento(paciente.getFechaNacimiento());
@@ -80,7 +80,7 @@ public class PacienteService {
         dto.setNumeroIdentificacion(paciente.getNumeroIdentificacion());
         dto.setEmail(paciente.getEmail());
         
-        // Obtener nombre del usuario que registró
+        
         dto.setRegistradoPor(paciente.getUsuarioRegistro() != null ? 
                 paciente.getUsuarioRegistro().getNombreCompleto() : "Sistema");
         
